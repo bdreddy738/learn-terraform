@@ -1,0 +1,59 @@
+# 🔁 Git Daily Sync (Upstream → Your Repo)
+
+# --- ONE TIME SETUP ---
+
+# (Run only once)
+
+git remote add upstream https://github.com/raghudevopsb89/learn-terraform.git
+
+# Verify remotes
+
+git remote -v
+
+# --- DAILY SYNC (MAIN BRANCH) ---
+
+git checkout main
+git fetch upstream
+git pull upstream main
+git push origin main
+
+# --- WHEN TRAINER CREATES NEW BRANCH (example: terraform) ---
+
+git fetch upstream
+git branch -r                      # check available branches
+git checkout -b terraform upstream/terraform
+git push -u origin terraform
+
+# --- DAILY UPDATE FOR ANY BRANCH ---
+
+git checkout <branch-name>
+git fetch upstream
+git pull upstream <branch-name>
+git push origin <branch-name>
+
+# --- QUICK CHECKS ---
+
+git branch                         # current branch
+git remote -v                      # remotes
+git status                         # working tree
+
+# --- HANDLE UNTRACKED FILES (OPTIONAL) ---
+
+git add .
+git commit -m "your message"
+git push origin <branch-name>
+
+# --- IF CONFLICTS HAPPEN ---
+
+# fix files manually, then:
+
+git add .
+git commit -m "resolve conflict"
+git push origin <branch-name>
+
+
+git pull upstream main && git push origin main
+
+
+
+
